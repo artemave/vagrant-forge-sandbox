@@ -1,5 +1,3 @@
-module Vagrant
-  module ForgeSandbox
-    VERSION = "0.0.1"
-  end
+module VagrantForgeSandbox
+  VERSION = "0.0.1"
 end
