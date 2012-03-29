@@ -1,4 +1,4 @@
-# Vagrant::ForgeSandbox
+# VagrantForgeSandbox
 
 Common vagrant provisioning for forge sandbox hidden in a gem
 
@@ -12,15 +12,15 @@ Install bundle:
 
     $ bundle
 
-    # this will move into gem itself
-    $ curl -o ./deps/ca.pem https://ca.dev.bbc.co.uk/ca.pem
-    $ keytool -import -alias CA -file ./deps/ca.pem -keystore ./deps/jssecacerts
+You need to specify your dev certificate (passwordless, in .pem format) in Vagrantfile:
 
-Copy your dev certificate (passwordless, in .pem format) to ./deps/certificate.pem
+    config.forge_sandbox.cert = "./my_dev_bbc_cert.pem"
+
+Use this to generate a passwordless one from p12:
   
-    $ openssl pkcs12 -in ~/.my_dev_bbc_cert.p12 -out ./deps/certificate.pem -nodes
+    $ openssl pkcs12 -in my_dev_bbc_cert.p12 -out my_dev_bbc_cert.pem -nodes
 
-You can now run vagrant up/provision and it will automatically take care of keeping forge rpms and setup up-to-date
+You can now run vagrant up/provision and it will automatically take care of keeping forge rpms up-to-date and certs set up.
 
 ## Contributing
 
