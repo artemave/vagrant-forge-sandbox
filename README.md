@@ -6,7 +6,7 @@ Common vagrant provisioning for forge sandbox hidden in a gem
 
 Add this line to your application's Gemfile:
 
-    gem 'vagrant-forge-sandbox'
+    gem 'vagrant-forge-sandbox', git: "https://github.com/artemave/vagrant-forge-sandbox.git"
 
 Install bundle:
 
