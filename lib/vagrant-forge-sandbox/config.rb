@@ -2,7 +2,7 @@ module VagrantForgeSandbox
   class Config < Vagrant::Config::Base
     attr_accessor :cert
 
-    def validate
+    def validate(env, errors)
       if cert
         errors.add "Certificate file not found." unless File.exists?(cert)
       else

@@ -7,8 +7,6 @@ function setup_certificates {
 
   openssl pkcs12 -export -in ./cert.pem -out ~/.subversion/dev.bbc.co.uk.p12 -passout pass:
   cat ./servers >> ~/.subversion/servers
-
-  cp ./jssecacerts /etc/pki/
 }
 
 function install_dependencies {
