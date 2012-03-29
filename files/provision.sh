@@ -5,10 +5,10 @@ function setup_certificates {
   cp -f ./cert.pem ~/.yum/dev.bbc.co.uk.key
   cp -f ./ca.pem ~/.subversion/ca.pem
 
-  openssl pkcs12 -export -in /vagrant/deps/certificate.pem -out ~/.subversion/dev.bbc.co.uk.p12 -passout pass:
-  cat /vagrant/deps/servers >> ~/.subversion/servers
+  openssl pkcs12 -export -in ./cert.pem -out ~/.subversion/dev.bbc.co.uk.p12 -passout pass:
+  cat ./servers >> ~/.subversion/servers
 
-  cp /vagrant/deps/jssecacerts /etc/pki/
+  cp ./jssecacerts /etc/pki/
 }
 
 function install_dependencies {
@@ -38,9 +38,9 @@ function setup_and_run_rest_assured {
   rest-assured -a mysql -p 4578 &
 }
 
+# make sure hostname 'sandbox' resolves to localhost. That is needed by (probably, but not sure) jmx stuff
+grep '127.0.0.1 sandbox' /etc/hosts || echo '127.0.0.1 sandbox' >> /etc/hosts
+
 setup_certificates
 install_dependencies
 #setup_and_run_rest_assured
-
-# make sure hostname 'sandbox' resolves to localhost. That is needed by (probably, but not sure) jmx stuff
-grep '127.0.0.1 sandbox' /etc/hosts || echo '127.0.0.1 sandbox' >> /etc/hosts

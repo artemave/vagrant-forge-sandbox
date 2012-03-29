@@ -1,0 +1,6 @@
+[groups]
+greenhouse = repo.dev.bbc.co.uk
+
+[greenhouse]
+ssl-client-cert-file=/root/.subversion/dev.bbc.co.uk.p12
+ssl-authority-files=/root/.subversion/ca.pem

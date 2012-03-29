@@ -9,6 +9,9 @@ module VagrantForgeSandbox
       @vm.ui.info "Provisioning Forge Sandbox..."
 
       upload_certs
+
+      @vm.channel.upload("#{local_path}/servers", upload_path)
+
       provision
 
       @app.call(env)
@@ -20,10 +23,12 @@ module VagrantForgeSandbox
         '/tmp/vagrant-forge-sandbox'
       end
 
-      def provision
-        path = File.expand_path("../../../provision.sh", __FILE__)
+      def local_path
+        File.expand_path "../../../files", __FILE__
+      end
 
-        @vm.channel.upload(path, upload_path)
+      def provision
+        @vm.channel.upload("#{local_path}/provision.sh", upload_path)
 
         @vm.channel.sudo "cd #{upload_path} && chmod +x provision.sh && provision.sh" do |type, data|
           print_to_ui(type, data)
