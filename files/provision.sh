@@ -36,6 +36,9 @@ function setup_and_run_rest_assured {
   rest-assured -a mysql -p 4578 &
 }
 
+# let TimeZone be GMT
+ln -sf /usr/share/zoneinfo/GMT /etc/localtime
+
 # make sure hostname 'sandbox' resolves to localhost. That is needed by (probably, but not sure) jmx stuff
 grep '127.0.0.1 sandbox' /etc/hosts || echo '127.0.0.1 sandbox' >> /etc/hosts
 
