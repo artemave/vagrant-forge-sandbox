@@ -16,6 +16,8 @@ You need to specify your dev certificate (passwordless, in .pem format) in Vagra
 
     config.forge_sandbox.cert = "./my_dev_bbc_cert.pem"
 
+This will end up in /root/.yum/dev.bbc.co.uk.pem on a sandbox whether you need it later for any project specific provisioning.
+
 Use this to generate a passwordless one from p12:
   
     $ openssl pkcs12 -in my_dev_bbc_cert.p12 -out my_dev_bbc_cert.pem -nodes
