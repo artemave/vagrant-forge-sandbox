@@ -4,7 +4,7 @@ module VagrantForgeSandbox
 
     def validate(env, errors)
       if cert
-        errors.add "Certificate file not found." unless File.exists?(cert)
+        errors.add "Certificate '#{cert}' file not found." unless File.exists?(cert)
       else
         errors.add "Missing path to certificate. Specify 'config.forge_sandbox.cert' in Vagrantfile"
       end
