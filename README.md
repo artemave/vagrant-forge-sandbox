@@ -1,12 +1,15 @@
 # VagrantForgeSandbox
 
-Common vagrant provisioning for forge sandbox hidden in a gem
+Common vagrant provisioning (certificates and sandbox rpms) for forge sandbox hidden in a gem. 
+
+Requires vagrant base box converted from forge sandbox.
 
 ## Usage
 
 Add this line to your application's Gemfile:
 
     gem 'vagrant-forge-sandbox', git: "https://github.com/artemave/vagrant-forge-sandbox.git"
+    gem 'vagrant-vbguest' # not required but strongly advised
 
 Install bundle:
 
@@ -18,7 +21,7 @@ You need to specify your dev certificate (passwordless, in .pem format) in Vagra
 
 This will end up in /root/.yum/dev.bbc.co.uk.pem on a sandbox whether you need it later for any project specific provisioning.
 
-Use this to generate a passwordless one from p12:
+Use the following to generate a passwordless one from p12:
   
     $ openssl pkcs12 -in my_dev_bbc_cert.p12 -out my_dev_bbc_cert.pem -nodes
 
